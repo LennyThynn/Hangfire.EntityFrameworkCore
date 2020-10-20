@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Hangfire.EntityFrameworkCore
 {
@@ -27,6 +28,7 @@ namespace Hangfire.EntityFrameworkCore
         [Required]
         public string InvocationData { get; set; }
 
+        [ForeignKey("StateId")]
         public virtual HangfireState State { get; set; }
         
         public virtual ICollection<HangfireJobParameter> Parameters { get; set; }

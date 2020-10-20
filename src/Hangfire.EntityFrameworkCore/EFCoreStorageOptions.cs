@@ -15,6 +15,7 @@ namespace Hangfire.EntityFrameworkCore
         private TimeSpan _jobExpirationCheckInterval = new TimeSpan(0, 30, 0);
         private TimeSpan _slidingInvisibilityTimeout = new TimeSpan(0, 5, 0);
         private string _schema = string.Empty;
+        private string _prefix = string.Empty;
 
         /// <summary>
         /// Gets or set maximal distributed lock lifetime. The default value is 00:10:00.
@@ -132,6 +133,28 @@ namespace Hangfire.EntityFrameworkCore
                 if (value is null)
                     throw new ArgumentNullException(nameof(value));
                 _schema = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets or set DB storage table and index prefix. The <see cref="string.Empty"/> value means that
+        /// no prefix will be used.
+        /// The default value is <see cref="string.Empty"/>.
+        /// </summary>
+        /// <value>
+        /// A database name prefix.
+        /// </value>
+        /// <exception cref="ArgumentNullException">
+        /// <paramref name="value"/> is <see langword="null"/>.
+        /// </exception>
+        public string Prefix
+        {
+            get => _prefix;
+            set
+            {
+                if (value is null)
+                    throw new ArgumentNullException(nameof(value));
+                _prefix = value;
             }
         }
 

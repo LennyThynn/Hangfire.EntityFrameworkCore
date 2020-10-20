@@ -172,7 +172,7 @@ namespace Hangfire.EntityFrameworkCore
 
         internal HangfireContext CreateContext()
         {
-            var context = new HangfireContext(_contextOptions, _options.Schema);
+            var context = new HangfireContext(_contextOptions, _options.Schema, _options.Prefix);
             if (!_databaseInitialized)
                 lock (_lock)
                     if (!_databaseInitialized)

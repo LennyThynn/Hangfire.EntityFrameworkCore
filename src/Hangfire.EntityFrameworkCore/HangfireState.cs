@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Hangfire.EntityFrameworkCore
 {
@@ -21,6 +22,7 @@ namespace Hangfire.EntityFrameworkCore
         [Required]
         public string Data { get; set; }
 
+        [ForeignKey("JobId")]
         public virtual HangfireJob Job { get; set; }
     }
 }
